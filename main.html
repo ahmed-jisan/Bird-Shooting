@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="UTF-8">
+  <title>Bird Shooting</title>
+  
+  <style>
+  
+  *{
+  
+  margin: 0;
+  padding: 0;
+  font-family: arial;
+  box-sizing: border-box;
+  
+  }
+  
+  #container{
+  
+  height: 100vh;
+  width: 100vw;
+  background: url(images.jpeg) no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  
+  }
+  
+  img{
+  
+  height: 100px;
+  background: none;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-100%,-50%);
+  filter: drop-shadow(3px 3px 6px #666);
+  
+  }
+  
+  .one{
+  
+  top: 20%;
+  animation: 9s one linear infinite;
+  
+  }
+  
+  .two{
+  
+  top: 28%;
+  animation: 6s two linear infinite;
+  
+  }
+  
+  .three{
+  
+  top: 36%;
+  animation: 7s three linear infinite;
+  
+  }
+  
+  .four{
+  
+  top: 44%;
+  animation: 10s four linear infinite;
+  
+  }
+  
+  @keyframes one{
+  
+  from{left: 0%;}
+  
+  50%{left: 50%;top: 15%;}
+  
+  to{left: 110%;}
+  
+  }
+  
+  @keyframes two{
+  
+  from{left: 0%;}
+  
+  50%{left: 50%;top: 20%;}
+  
+  to{left: 110%;}
+  
+  }
+  
+  @keyframes three{
+  
+  from{left: 0%;}
+  
+  50%{left: 50%;top: 30%;}
+  
+  to{left: 110%;}
+  
+  }
+  
+  @keyframes four{
+  
+  from{left: 0%;}
+  
+  50%{left: 50%;top: 50%;}
+  
+  to{left: 110%;}
+  
+  }
+  
+  #pointer{
+  
+  height: 50px;
+  width: 50px;
+  top: 70%;
+  left: 40%;
+  transform: translate(-50%,-50%);
+  
+  }
+  
+  #misan{
+  
+  font-size: 50px;
+  font-weight: bold;
+  color: #444;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+  
+  }
+  
+  </style>
+  
+</head>
+<body>
+  
+  <div id="container">
+  
+    <img class="bird one" src="one.gif"/>
+    <img class="bird two" src="three.gif"/>
+    <img class="bird three" src="one.gif"/>
+    <img class="bird four" src="three.gif"/>
+    
+    <img id="pointer" src="unnamed.png"/>
+    <div id="misan">Score : 0</div>
+  
+  </div>
+  
+  <audio src="shot.mp3" id="jisan1"></audio>
+  <audio src="shot.mp3" id="jisan2"></audio>
+  <audio src="shot.mp3" id="jisan3"></audio>
+  <audio src="shot.mp3" id="jisan4"></audio>
+  
+  <script>
+  
+  let bird = document.querySelectorAll(".bird");
+  
+  let pointer = document.querySelector("#pointer");
+  
+  let animations = [
+  
+  "9s one linear infinite",
+  "7s two linear infinite",
+  "6s three linear infinite",
+  "10s four linear infinite"
+  
+  ];
+  
+  let x = 0;
+  
+  bird[0].onclick = function(){
+  
+  this.style.animation = "none";
+  jisan1.play();
+  x = x+1;
+  misan.innerHTML = "Score : "+x;
+  
+  setTimeout(function(){
+  
+  bird[0].style.animation = animations[0];
+  jisan1.pause();
+  jisan1.currentTime = 0;
+  
+  },1000);
+  
+  }
+  
+  bird[1].onclick = function(){
+  
+  this.style.animation = "none";
+  jisan2.play();
+  x = x+1;
+  misan.innerHTML = "Score : "+x;
+  
+  setTimeout(function(){
+  
+  bird[1].style.animation = animations[1];
+  jisan2.pause();
+  jisan2.currentTime = 0;
+  
+  },1000);
+  
+  }
+  
+  bird[2].onclick = function(){
+  
+  this.style.animation = "none";
+  jisan3.play();
+  x = x+1;
+  misan.innerHTML = "Score : "+x;
+  
+  setTimeout(function(){
+  
+  bird[2].style.animation = animations[2];
+  jisan3.pause();
+  jisan3.currentTime = 0;
+  
+  },1000);
+  
+  }
+  
+  bird[3].onclick = function(){
+  
+  this.style.animation = "none";
+  jisan4.play();
+  x = x+1;
+  misan.innerHTML = "Score : "+x;
+  
+  setTimeout(function(){
+  
+  bird[3].style.animation = animations[3];
+  jisan4.pause();
+  jisan4.currentTime = 0;
+  
+  },1000);
+  
+  }
+  
+  window.onclick = function(e){
+  
+  pointer.style.left = e.pageX+"px";
+  pointer.style.top = e.pageY+"px";
+  
+  }
+  
+  </script>
+  
+</body>
+</html>
